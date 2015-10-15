@@ -1,15 +1,26 @@
 __author__ = 'KoicsD'
+import MyAssistants as MAs
 from datetime import datetime
 from datetime import timedelta
 from random import randint
 TestMethodsIndependently = False
 
 # class Person as super?
-# moving assistant functions to a separate module?
+# moving assistant functions to a separate module?                                      Done.
 # __repr__?
 # creating print functions for each fields and making .printdonor use these funs?
 # set and get functions?
 # parser and stringiser functions like datetime.strptime or .strmtime?
+
+
+def errmsg(string="", to_print=True):
+    msg = "Invalid Input"
+    if string != "":
+        msg += " " + string
+    msg += "!"
+    if to_print:
+        print(msg)
+    return msg
 
 
 class Donor(object):
@@ -74,41 +85,13 @@ class Donor(object):
     #       must contain 7 digits after predial
     #
 
-    # Universal constants:
+    # universal constants:
     hun_predials = ("06", "0036", "+36")
     mobile_predials = ("20", "30", "70")
     email_endings = (".com", ".hu")
     types_of_blood = ("0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-")
 
-    # assistant functions:
-    @staticmethod
-    def are_the_same(first, second):
-        return first == second
-
-    @staticmethod
-    def first_true(fun, obj, lst):
-        for index in range(len(lst)):
-            if fun(obj, lst[index]):
-                return index
-        return -1
-
-    @staticmethod
-    def true_for_any(fun, obj, lst):
-        for item in lst:
-            if fun(obj, item):
-                return True
-        return False
-
-    @staticmethod
-    def listing(lst, prefix, delimiter, postfix):
-        text = prefix
-        for i in range(len(lst)):
-            if i > 0:
-                text += delimiter
-            text += lst[i]
-        text += postfix
-        return text
-
+    # assistant function:
     @staticmethod
     def print_mobile(str_number, to_print=False):
         ind = Donor.first_true(str.startswith, str_number, Donor.hun_predials)
@@ -123,16 +106,6 @@ class Donor(object):
         if to_print:
             print(str_number)
         return str_number
-
-    @staticmethod
-    def errmsg(string="", to_print=True):
-        msg = "Invalid Input"
-        if string != "":
-            msg += " " + string
-        msg += "!"
-        if to_print:
-            print(msg)
-        return msg
 
     # initializer:              # init              # init              # init              # init
     def __init__(self):
@@ -302,7 +275,7 @@ class Donor(object):
                 else:
                     print("Weight must be at least 50 kgs!")
             except ValueError:
-                Donor.errmsg("for Integer")
+                errmsg("for Integer")
         self.weight = i_weight
         return False
 
@@ -342,7 +315,7 @@ class Donor(object):
                 else:
                     print("Age must be at least 18!")
             except ValueError:  # str to date conversion failed
-                Donor.errmsg("for Date")
+                errmsg("for Date")
         # finally, saving:
         self.date_of_birth = p_date_of_birth
         self.age = age
@@ -389,7 +362,7 @@ class Donor(object):
                     else:
                         print("Last Donation must be at least 30 days ago!")
                 except ValueError:  # str to date conversion failed
-                    Donor.errmsg("for Date")
+                    errmsg("for Date")
             # finally, saving:
             self.last_donation = p_last_donation
             self.since_last_time = since_last_time
@@ -425,7 +398,7 @@ class Donor(object):
         r_blood_type = ""
         u_blood_type = "none"
         while True:  # until input OK
-            print(Donor.listing(Donor.types_of_blood, "Possible types of blood: ", ", ", ""))
+            print(MAs.listing(Donor.types_of_blood, "Possible types of blood: ", ", ", ""))
             r_blood_type = input("Type of Blood: ")
             u_blood_type = r_blood_type.upper()
             if u_blood_type == "\QUIT":  # enabling User to quit
@@ -457,7 +430,7 @@ class Donor(object):
                 else:
                     print("Unique Identifier must be valid!")
             except ValueError:  # str to date conversion failed
-                Donor.errmsg("for Date")
+                errmsg("for Date")
         # finally, saving:
         self.expiration_of_id = p_expiration_of_id
         return False
@@ -476,10 +449,10 @@ class Donor(object):
                 msg = "E-mail Address must contain exactly 1 occourance of character '@'!"
             elif p_email[0] == "":
                 msg = "E-mail Address must contain at least one character before '@'!"
-            elif not Donor.true_for_any(str.endswith, p_email[1], Donor.email_endings):
-                msg = Donor.listing(Donor.email_endings, "E-mail Address must end with \"", "\" or \"", "\"!")
-            elif Donor.true_for_any(Donor.are_the_same, p_email[1], Donor.email_endings):
-                msg = Donor.listing(Donor.email_endings,
+            elif not MAs.true_for_any(str.endswith, p_email[1], Donor.email_endings):
+                msg = MAs.listing(Donor.email_endings, "E-mail Address must end with \"", "\" or \"", "\"!")
+            elif MAs.true_for_any(MAs.are_the_same, p_email[1], Donor.email_endings):
+                msg = MAs.listing(Donor.email_endings,
                                     "E-mail Address must contain at least one character between \"@\" and \"",
                                     "\"/\"", "\"!")
             if msg == "Valid":
@@ -500,17 +473,17 @@ class Donor(object):
                 return True
             msg = "Valid"  # checking validity
             l_pred = 0
-            ind = Donor.first_true(str.startswith, mobile_number, Donor.hun_predials)
+            ind = MAs.first_true(str.startswith, mobile_number, Donor.hun_predials)
             if ind >= 0:
                 l_pred = len(Donor.hun_predials[ind])
             elif mobile_number == "":
                 msg = "Mobile Number cannot be empty!"
             else:
-                msg = Donor.listing(Donor.hun_predials, "You must use the predial \"", "\" or \"",
+                msg = MAs.listing(Donor.hun_predials, "You must use the predial \"", "\" or \"",
                                     "\" to dial a hungarian number!")
             if l_pred > 0:
-                if not Donor.true_for_any(str.startswith, mobile_number[l_pred:], Donor.mobile_predials):
-                    msg = Donor.listing(Donor.mobile_predials, "You must dial \"", "\" or \"",
+                if not MAs.true_for_any(str.startswith, mobile_number[l_pred:], Donor.mobile_predials):
+                    msg = MAs.listing(Donor.mobile_predials, "You must dial \"", "\" or \"",
                                         "after country predial in case of a Mobile Number!")
                 elif len(mobile_number) != l_pred + 2 + 7:
                     msg = "Mobile Number must have a length of 7 digits after predials!"
@@ -581,7 +554,7 @@ if __name__ == "__main__":  # test-code
         print()
         print('-' * 9)
         print()
-        from my_class_test import MethodToTest
+        from MyClassTest import MethodToTest
         methods_to_test = (MethodToTest("__init__", Donor.__init__, False),
                            MethodToTest("user_warning", Donor.user_warning, True),
                            MethodToTest("input_name", Donor.input_name, False),

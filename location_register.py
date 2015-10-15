@@ -1,15 +1,26 @@
 __author__ = 'KoicsD'
+import MyAssistants as MAs
 from datetime import datetime
 from datetime import timedelta
 TestMethodsIndependently = False
 
 # making it contain a list of Donors?
 # using class Address for city, address and zipcode?
-# moving assistant functions to a separate module?
+# moving assistant functions to a separate module?                                          Done.
 # __repr__?
 # creating print functions for each fields and making .printdonation use these funs?
 # set and get functions?
 # parser and stringiser functions like datetime.strptime or .strftime?
+
+
+def errmsg(string="", to_print=True):
+    msg = "Invalid Input"
+    if string != "":
+        msg += " " + string
+    msg += "!"
+    if to_print:
+        print(msg)
+    return msg
 
 
 class Donation(object):
@@ -58,27 +69,7 @@ class Donation(object):
     preparation_time = 30
     donation_time = 30
 
-    # assistant functions:
-    @staticmethod
-    def errmsg(string="", to_print=True):
-        msg = "Invalid Input"
-        if string != "":
-            msg += " " + string
-        msg += "!"
-        if to_print:
-            print(msg)
-        return msg
-
-    @staticmethod
-    def listing(lst, prefix, delimiter, postfix):
-        text = prefix
-        for i in range(len(lst)):
-            if i > 0:
-                text += delimiter
-            text += lst[i]
-        text += postfix
-        return text
-
+    # assistant function:
     @staticmethod
     def max_don_num(t_duration, n_beds):
         return t_duration - Donation.preparation_time / (n_beds * Donation.donation_time)
@@ -141,7 +132,7 @@ class Donation(object):
                 else:
                     print("Date in 10 days or on weekday or expired!")
             except ValueError:  # str to date conversion failed
-                Donation.errmsg("for Date")
+                errmsg("for Date")
         # finally, saving modifications:
         self.date = p_date
         self.date_set = True
@@ -177,7 +168,7 @@ class Donation(object):
                 else:
                     print(msg)
             except ValueError:  # str to time conversion failed
-                Donation.errmsg("for Time")
+                errmsg("for Time")
         # finally, saving:
         self.start_time = p_time
         if self.end_time_set:
@@ -217,7 +208,7 @@ class Donation(object):
                 else:
                     print(msg)
             except ValueError:  # str to time conversion failed
-                Donation.errmsg("for Time")
+                errmsg("for Time")
         # finally, saving:
         self.end_time = p_time
         if self.start_time_set:
@@ -233,7 +224,7 @@ class Donation(object):
             if len(zip_code) == 4 and not zip_code.startswith("0"):  # testing
                 break  # input OK
             else:
-                Donation.errmsg()
+                errmsg()
         self.zip_code = zip_code  # saving
 
     def input_city(self):                                                   # requesting  for City
@@ -241,7 +232,7 @@ class Donation(object):
         p_city = "none"
         while True:  # until User gives an appropriate input
             # firstly, printing the List of Cities Available:
-            print(Donation.listing(Donation.cities_available, "Cities Available: ", ", ", ""))
+            print(MAs.listing(Donation.cities_available, "Cities Available: ", ", ", ""))
             # secondly, input:
             city = input("City: ")
             # then testing:
@@ -271,7 +262,7 @@ class Donation(object):
             if 0 < length <= 25 and "".join(p_street.split(" ")).isalpha():  # checking
                 break  # input is OK
             else:
-                Donation.errmsg()
+                errmsg()
         # requesting for House Number
         while True:  # until input is OK
             number = input("House Number: ")  # input
@@ -282,7 +273,7 @@ class Donation(object):
                 else:
                     print("House Number must be positive!")
             except ValueError:  # str to int conversion failed
-                Donation.errmsg("for Integer")
+                errmsg("for Integer")
         self.address["street"] = p_street
         self.address["number"] = p_number
 
@@ -310,7 +301,7 @@ class Donation(object):
                 else:
                     print(msg)
             except ValueError:  # str to int conversion failed
-                Donation.errmsg("for Integer")
+                errmsg("for Integer")
         # finally, saving:
         self.beds_available = p_beds_available
         if self.start_time_set and self.end_time_set:
@@ -336,7 +327,7 @@ class Donation(object):
                 else:
                     print(msg)
             except ValueError:  # str to int conversion failed
-                Donation.errmsg("for Integer")
+                errmsg("for Integer")
         # finally, saving:
         self.number_of_donors = p_number_of_donors
 
@@ -366,7 +357,7 @@ class Donation(object):
                 else:
                     break  # input is OK
             except ValueError:  # conversion failed
-                Donation.errmsg("for Integer")
+                errmsg("for Integer")
 
         # then processing and printing:
         ratio_of_success = int(100 * p_number_of_success / self.number_of_donors)
@@ -424,7 +415,7 @@ if __name__ == "__main__":  # test-code
         print()
         print('-' * 9)
         print()
-        from my_class_test import MethodToTest
+        from MyClassTest import MethodToTest
         methods_to_test = (MethodToTest("__init__", Donation.__init__, False),
                            MethodToTest("input_date", Donation.input_date, False),
                            MethodToTest("input_start_time", Donation.input_start_time, False),
