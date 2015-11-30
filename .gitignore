@@ -60,5 +60,5 @@ target/
 .idea/
 
 # UML
-*.asv
+*.autosave
 *.dia~
