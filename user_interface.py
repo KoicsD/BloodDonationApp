@@ -62,6 +62,7 @@ class Lister:
 
 
 def startup():  # module initializer
+    data_handler.startup()
     pass
 
 
