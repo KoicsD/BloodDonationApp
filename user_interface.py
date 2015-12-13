@@ -1,8 +1,12 @@
-from time import sleep
 from uinp import *
 import menu
 import event_ui, donor_ui
 import data_handler
+import screeen_handler
+
+# input_fcn = screeen_handler.menu_input  # connecting usr_inp to screen_handler
+# menu.print_fcn = screeen_handler.menu_print  # connecting menu print to screen_handler
+# menu.cls_fcn = screeen_handler.menu_clear  # connecting menu clear to screen_handler
 
 
 class Adder:

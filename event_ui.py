@@ -1,6 +1,6 @@
-from time import sleep
 from uinp import *
 import event_reg
+import screeen_handler
 
 
 class UIEvent(event_reg.Event):  # extending Event class with user-input functions

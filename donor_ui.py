@@ -1,6 +1,6 @@
-from time import sleep
 from uinp import *
 import donor_reg
+import screeen_handler
 
 
 class UIDonor(donor_reg.Donor):  # extending Donor class with user-input functions
