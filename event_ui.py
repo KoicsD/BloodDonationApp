@@ -1,4 +1,4 @@
-from uinp import *
+import uinp
 import event_reg
 import screeen_handler
 
