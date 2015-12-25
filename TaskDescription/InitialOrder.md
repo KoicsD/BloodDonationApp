@@ -94,7 +94,12 @@ At the end of the event registration ask the user about how many successfull don
 --------------------------------------------------------
 --------------------------------------------------------
 
-tags: error handling, git, OOP, python, SCRUM
+tags:
+[error handling](https://docs.python.org/3/tutorial/errors.html?highlight=error%20handling),
+[git](https://git-scm.com),
+[OOP](https://en.wikipedia.org/wiki/Object-oriented_programming),
+[python](https://www.python.org),
+[SCRUM](https://en.wikipedia.org/wiki/Scrum_(software_development))
 
 [Next: Week5](OrdersWeek5.md)  
 [Back to README](../README.md)
