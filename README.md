@@ -1,4 +1,4 @@
-# Welcome to my BloodDonationApp.
+# Welcome to my BloodDonationApp!
 
 In this repository I would like to implement my own version of Blood Donation Database Manager from repository [*CharliesAngels*](https://github.com/KoicsD/CharliesAngels/). This is meant to be a kind of summarizing my studies in [*Python*](https:www.python.org/).
 
