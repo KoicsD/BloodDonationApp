@@ -1,0 +1,5 @@
+name,weight,gender,date_of_birth,last_donation,last_month_sickness,unique_identifier,expiration_of_id,blood_type,hemoblogin,email,mobil
+Kiss Bela,85,m,1990.05.30.,2015.01.01.,no,654987AS,2017.10.10.,B-,112,kiss@bela.com,+36306543251
+Nagy Olga,65,f,1995.10.06.,2015.10.01.,no,987623CV,2019.01.10.,A-,150,nagyolga@kisvagy.hu,+36703265849
+Samsung Lajcsi,95,m,1990.01.01.,2014.10.01.,yes,123456AB,2016.10.10.,0-,160,asdasd@qwerty.com,+36205896321
+Kiszel Donatella,100,f,1970.08.06.,2015.03.01.,no,987654RT,2018.01.23.,B-,98,kiszel@donatellacska.ru,+36304152369

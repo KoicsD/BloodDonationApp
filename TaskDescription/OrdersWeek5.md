@@ -9,13 +9,27 @@ When a field is empty, store an empty field.
 Something like this:
 Kandisz Nóra,1990.09.10.,123456AB,,,"Régiposta u. 9. , Fsz/1",,
 
+--------------
+
 ## Acceptance criteria:
 
 * Add donor is available from main menu
 * After enter all necessary data that is appended to the previous stored **donors.csv**
 * The **donors.csv** file should be in a separated folder named: "**Data**"
 
+--------------
+
 Order: 1
+
+--------------
+
+[donor_sample.csv](donor_sample.csv)
+
+Donor sample
+
+--------------
+
+https://en.wikipedia.org/wiki/Comma-separated_values
 
 ---------------------------------------
 ---------------------------------------
@@ -31,13 +45,27 @@ When a field is empty, store an empty field.
 Something like this:
 Miskolc,2015.12.01,,,,"Régiposta u. 9. , Fsz/1",,
 
+---------------
+
 ## Acceptance criteria:
 
 * Add doantion is available from main menu
 * After enter all necessary data that is appended to the previous stored **donations.csv**
 * The **donations.csv** file should be in a separated folder named: "**Data**"
 
+---------------
+
 Order: 2
+
+--------------
+
+[donations_sample.csv](donations_sample.csv)
+
+Donation sample
+
+--------------
+
+https://en.wikipedia.org/wiki/Comma-separated_values
 
 ----------------------------------------
 ----------------------------------------
@@ -66,6 +94,8 @@ When the user types in a number (1-7) and presses enter the screen should be cle
 * Delete a donation event: the program should get the unique identifier of the donation event. After the program deleted the donation event with the given identifier, it should return to the main menu screen.
 * List donors or donation events: chosing this menu item a new menu screen should be appeared where the user can choose if he/she would like to list donors (1) or donation events (2) or can cancel (0) the operation and return to the main menu screen. When user chose list donors the program should list all the previously stored donors. It is similar to list donation events.
 
+------------------
+
 ## Acceptance criteria:
 
 * add new donor
@@ -78,6 +108,8 @@ When the user types in a number (1-7) and presses enter the screen should be cle
 * after add/delete actions the system go back to the main menu
 * after list and search actions there is a possibility to go back to the main menu
 
+---------------------
+
 Order: 3
 
 --------------------------------------
@@ -89,12 +121,16 @@ Order: 3
 
 As a user I want to have a menu item in the application to be able to delete any donor. I want to use the attribute to delete the selected one that handled as a unique identifier. In case of missing or wrong ID I want to know I have to correct the given input to search. In that case the corresponding error message is visible. I want to have a feedback about the executed deletion. If it was possible then a notification is necesseary. Please keep in mind the storage file do not store the deleted data after the deletion.
 
+---------------------
+
 ## Acceptance criteria:
 
 * The donor with given ID is deleted when I chose the corresponding menuitem and type the ID to delete.
 * The storage file is up-to-date.
 * I have feedback message to be sure the state of the execution of the deletion.
 * When I can not delete because of any reason I want to get back to the main menu.
+
+---------------------
 
 Order: 4
 
@@ -107,12 +143,16 @@ Order: 4
 
 As a user I want to have a menu item in the application to be able to delete any donation. I want to use the attribute to delet the selected one that handled as a unique identifier. In case of missing or wrong ID I want to know I have to correct the given input to search. In that case the corresponding error message is visible. I want to have a feedback about the executed deletion. If it was possible then a notification is necesseary. Please keep in mind the storage file do not store the deleted data after the deletion.
 
+-----------------
+
 ## Acceptance criteria:
 
 * The donation with given ID is deleted when I chose the corresponding menuitem and type the ID to delete.
 * The storage file is up-to-date.
 * I have feedback message to be sure the state of the execution of the deletion.
 * When I can not delete because of any reason I want to get back to the main menu.
+
+-----------------
 
 Order: 5
 
@@ -134,12 +174,16 @@ Bela, Kiss
 -------------------------------------------
 ```
 
+-------------------
+
 ## Acceptance criteria:
 
 I can succesfully list the donors or donations from the storage file to the screen.
 I can page the donors or donations if cannot be listed out in one screen alltogether.
 If the list is empty the user should be informed.
 The printing should be structured in the given form.
+
+------------------
 
 Order: 6
 
@@ -154,6 +198,8 @@ As a user I want to have a **Search** menu in the application. When the search m
 
 ![](search_menu.jpg)
 
+---------------------
+
 ## Acceptance criteria:
 
 * Entering into the search menu the screen should be cleared (see attachment)
@@ -164,6 +210,8 @@ As a user I want to have a **Search** menu in the application. When the search m
 * The printing should be structured in the given form.
 * The result items should start with an order
 * All result item should be separated with a line
+
+------------------
 
 Order: 7
 
@@ -180,12 +228,16 @@ As a user I want to be able to give a field as an order by clause when I choose 
 * Date of event in case of Donation
   by default.
 
+---------------------
+
 ## Acceptance criteria:
 
 * The option list appeared after chose List
 * By default the result sorted by Name in case of Donors
 * By default the result sorted by Date of event in case of Donations
 * If I chose a concrete field the result should be sorted according to that
+
+--------------------
 
 Order: 8
 
@@ -198,6 +250,8 @@ Order: 8
 
 As a user I want to see more visualization in the menu. I don't want to enter a number for select a menu item. I want it to be more comfortable just stepping between menu items with the up/down cursor keys. I want to see which menu item is selected before I choose it so the current menu item should has white background and black font color.
 
+-------------------
+
 ## Acceptance criteria:
 
 * Menu is still funcational
@@ -206,6 +260,8 @@ As a user I want to see more visualization in the menu. I don't want to enter a 
 * If I press down key the menu item below becomes selected
 * When I stand on the last item than the selection doesn't change on pressing down
 * By default the first menu item is selected
+
+-------------------
 
 Order: 9
 
